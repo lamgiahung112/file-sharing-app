@@ -7,7 +7,7 @@ const upload = (files: File[]) => {
 		{ files },
 		{
 			headers: {
-				Authorization: localStorage.getItem("file-sharing-token"),
+				Authorization: "Bearer " + localStorage.getItem("file-sharing-token"),
 			},
 		}
 	)

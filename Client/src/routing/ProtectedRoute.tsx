@@ -11,9 +11,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ auth }) => {
 	console.log({ authenticated: auth.isAuthenticated })
 	if (!auth.isAuthenticated) {
 		if (!token) return <Navigate to="/login" />
-		return (
-			<Navigate to={`/auth?token=${encodeURIComponent(token)}&type=VERIFY_LOGIN`} />
-		)
+		return <Navigate to={`/auth?token=${token}&type=VERIFY_LOGIN`} />
 	}
 
 	return <Outlet />

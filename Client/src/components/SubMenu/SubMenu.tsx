@@ -1,4 +1,4 @@
-import Tippy from "@tippyjs/react"
+import Tippy from "@tippyjs/react/headless"
 import { cloneElement, useState } from "react"
 import { useLocation } from "react-router-dom"
 import { followCursor } from "tippy.js"
@@ -26,9 +26,11 @@ const SubMenu = ({ children }: SubMenuProps) => {
 
 	return (
 		<Tippy
+			allowHTML
 			visible={visible}
 			onClickOutside={() => setVisible(false)}
-			content={<Options />}
+			render={Options}
+			interactive
 			followCursor="initial"
 			placement="right-start"
 			plugins={[followCursor]}

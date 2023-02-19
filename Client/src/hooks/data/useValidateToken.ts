@@ -15,7 +15,7 @@ const onError = () => {
 }
 
 function useValidateToken(token: string, type: string) {
-	localStorage.setItem("file-sharing-token", `Bearer ${token}`)
+	localStorage.setItem("file-sharing-token", token)
 	return useQuery("AuthToken", () => verifyToken(token, type), {
 		refetchOnWindowFocus: false,
 		onError,

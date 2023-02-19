@@ -8,9 +8,6 @@ import RedisClient from "../utils/RedisClient"
 const emailRegex =
 	/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-const redis = RedisClient.getInstance()
-const mailer = Mailer.getInstance()
-
 type VerificationBody = {
 	token: string
 	type: VerificationType
@@ -34,10 +31,11 @@ const signup: Handler = async (req, res, next) => {
 
 	res.send("ok")
 	// send email
-	await mailer.sendVerificationEmail(body.email, token, "VERIFY_SIGNUP").catch((e) => {
-		console.log(e)
-		next(ApiError.InternalServerError("Failed to send verification email"))
-	})
+	await Mailer.getInstance()
+		.sendVerificationEmail(body.email, token, "VERIFY_SIGNUP")
+		.catch((e) => {
+			console.log(e)
+		})
 }
 
 const verifyFromEmailLink: Handler = async (req, res, next) => {
@@ -56,7 +54,7 @@ const verifyFromEmailLink: Handler = async (req, res, next) => {
 		})
 
 		const nextLink = `${process.env.CLIENT_URL}/auth?token=${accessToken}&type=VERIFY_LOGIN`
-		await redis.setEx(sub, 7 * 24 * 3600, token)
+		await RedisClient.getInstance().setEx(sub, 7 * 24 * 3600, token)
 		res.redirect(nextLink)
 	} catch (e) {
 		const nextLink = `${process.env.CLIENT_URL}/login`
@@ -69,7 +67,7 @@ const verify: Handler = async (req, res, next) => {
 	try {
 		const { sub } = jwt.decode(token) as { sub: string }
 
-		const tokenExists = await redis.get(sub)
+		const tokenExists = await RedisClient.getInstance().get(sub)
 
 		if (!tokenExists) jwt.verify(token, process.env.ACCESS_KEY)
 		res.send(jwt.decode(token))
@@ -90,10 +88,11 @@ const login: Handler = async (req, res, next) => {
 
 	res.send("ok")
 	// send email
-	await mailer.sendVerificationEmail(body.email, token, "VERIFY_LOGIN").catch((e) => {
-		console.log(e)
-		next(ApiError.InternalServerError("Failed to send verification email"))
-	})
+	await Mailer.getInstance()
+		.sendVerificationEmail(body.email, token, "VERIFY_LOGIN")
+		.catch((e) => {
+			console.log(e)
+		})
 }
 
 export { signup, verifyFromEmailLink, login, verify }

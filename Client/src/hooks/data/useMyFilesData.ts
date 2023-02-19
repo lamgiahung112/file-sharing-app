@@ -4,7 +4,7 @@ import HttpRequest from "../../utils/HttpRequest"
 const fetchMyFiles = () => {
 	return HttpRequest.get("/service/files", {
 		headers: {
-			Authorization: localStorage.getItem("file-sharing-token"),
+			Authorization: "Bearer " + localStorage.getItem("file-sharing-token"),
 		},
 	})
 }

@@ -1,10 +1,12 @@
-import UploadFile from "./UploadFile"
+import UploadFileOption from "./UploadFileOption"
+import styles from "./Options.module.scss"
+
+import _ from "../../../utils/ComponentClass"
 
 const Options = () => {
 	return (
-		<div>
-			Options
-			<UploadFile />
+		<div className={_(styles, "wrapper")}>
+			<UploadFileOption />
 		</div>
 	)
 }
