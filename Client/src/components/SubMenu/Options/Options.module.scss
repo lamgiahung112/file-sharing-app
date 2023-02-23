@@ -1,12 +1,23 @@
 .wrapper {
-    width: 80px;
+    width: 200px;
     background-color: aqua;
-    padding: 8px;
-
+    padding: 8px 0; 
+    
     .option {
+        cursor: pointer;
+        display: block;
+        color: black;
         background: transparent;
         border: 0;
         outline: 0;
-        padding: 8px 0;
+        padding: 8px 16px;
+
+        .icon {
+            width: 20px;
+        }
+
+        .title {
+            margin-left: 16px;
+        }
     }
 }

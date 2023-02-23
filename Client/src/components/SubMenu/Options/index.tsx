@@ -2,6 +2,7 @@ import UploadFileOption from "./UploadFileOption"
 import styles from "./Options.module.scss"
 
 import _ from "../../../utils/ComponentClass"
+import { MenuProps } from "./Options"
 
 const Options = () => {
 	return (

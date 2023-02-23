@@ -15,6 +15,7 @@ const ValidateUser: Handler = async (req, res, next) => {
 		email,
 	})
 	if (!foundUser) return next(ApiError.NotFound("User Not Found"))
+	res.locals.user = email
 	return next()
 }
 

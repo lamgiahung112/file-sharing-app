@@ -33,7 +33,10 @@ function App() {
 								/>
 							</Route>
 							<Route element={<ProtectedRoute auth={authStore} />}>
-								<Route element={<MyFiles />} path="/my-files" />
+								<Route
+									element={<MyFiles auth={authStore} />}
+									path="/my-files"
+								/>
 							</Route>
 						</Routes>
 					</main>

@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios"
 import { useQuery } from "react-query"
 import HttpRequest from "../../utils/HttpRequest"
 
@@ -9,7 +10,7 @@ const fetchMyFiles = () => {
 	})
 }
 const useMyFilesData = () => {
-	return useQuery({
+	return useQuery<AxiosResponse<FileNFolderInfo>>({
 		queryKey: `myFiles`,
 		queryFn: fetchMyFiles,
 		refetchOnWindowFocus: false,

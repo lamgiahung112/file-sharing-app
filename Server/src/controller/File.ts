@@ -28,7 +28,8 @@ const uploadFiles: Handler = async (req, res, next) => {
 }
 
 const getFilesAndFoldersOfUser: Handler = async (req, res, next) => {
-	const { folderId, user } = req.query as { folderId?: string; user: string }
+	const { folderId } = req.query as { folderId?: string }
+	const { user } = res.locals as { user: string }
 
 	const files = await File.find({
 		folderId,
@@ -42,7 +43,7 @@ const getFilesAndFoldersOfUser: Handler = async (req, res, next) => {
 		owner: user,
 	})
 
-	res.json({ files, folders })
+	res.json({ payload: { files, folders } })
 }
 
 export { uploadFiles, getFilesAndFoldersOfUser }
