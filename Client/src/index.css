@@ -32,6 +32,7 @@ html {
 #app main {
     background-color: black;
     height: calc(100vh - var(--header-height) - calc(var(--header-padding) * 3));
+    overflow-y: scroll;
 
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;

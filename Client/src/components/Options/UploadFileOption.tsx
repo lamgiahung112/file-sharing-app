@@ -1,9 +1,9 @@
 import styles from "./Options.module.scss"
-import _ from "../../../utils/ComponentClass"
+import _ from "../../utils/ComponentClass"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faFileUpload } from "@fortawesome/free-solid-svg-icons"
 import { useEffect, useState } from "react"
-import useUploadFiles from "../../../hooks/data/useUploadFiles"
+import useUploadFiles from "../../hooks/data/useUploadFiles"
 import { toast } from "react-toastify"
 
 const UploadFileOption = () => {

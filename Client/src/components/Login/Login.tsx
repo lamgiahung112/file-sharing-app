@@ -4,7 +4,7 @@ import HttpRequest from "../../utils/HttpRequest"
 import Title from "./Title"
 import Form from "./Form"
 import { toast } from "react-toastify"
-import { Navigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 import { ObservableAuthStore } from "../../stores/ObservableAuthStore"
 import { observer } from "mobx-react-lite"
 
@@ -22,6 +22,9 @@ function Login({ auth }: LoginProps) {
 		toast.success("Please check your email to continue!", {
 			position: "top-center",
 		})
+		setTimeout(() => {
+			window.open("https://mail.google.com")
+		}, 1500)
 	}
 	const onError = () => {
 		toast.warn("Please check if your email is correct!", {

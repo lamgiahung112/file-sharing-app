@@ -20,7 +20,10 @@ function Auth({ auth }: AuthProps) {
 		auth.load(token, data.data as AuthData)
 	}
 
-	if (isError) return <h1>Error</h1>
+	if (isError) {
+		localStorage.removeItem("file-sharing-token")
+		return <Navigate to="/login" />
+	}
 	if (isFetching) return <h1>Please wait while we're validating your credentials!</h1>
 	return <Navigate to="/" />
 }

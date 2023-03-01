@@ -18,6 +18,7 @@ function useValidateToken(token: string, type: string) {
 	localStorage.setItem("file-sharing-token", token)
 	return useQuery("AuthToken", () => verifyToken(token, type), {
 		refetchOnWindowFocus: false,
+		retry: 3,
 		onError,
 	})
 }
