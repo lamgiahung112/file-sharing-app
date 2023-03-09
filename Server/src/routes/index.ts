@@ -1,7 +1,7 @@
-import UserRouter from "./User"
-import FileRoute from "./File"
-import FolderRoute from "./Folder"
-import reset from "./ResetDB"
+import UserRouter from "./User.route"
+import FileRoute from "./File.route"
+import FolderRoute from "./Folder.route"
+import reset from "./ResetDB.route"
 import { Application } from "express"
 
 const initRoute = (app: Application) => {

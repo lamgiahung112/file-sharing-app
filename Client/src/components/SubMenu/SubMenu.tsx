@@ -38,11 +38,12 @@ const SubMenu = ({ children, type = "REGULAR", fileId }: SubMenuProps) => {
 			allowHTML
 			visible={visible}
 			onClickOutside={close}
-			render={() => <Options type={type} />}
+			render={() => <Options type={type} fileId={fileId} />}
 			interactive
 			followCursor="initial"
 			placement="right-start"
 			plugins={[followCursor]}
+			appendTo={document.body}
 		>
 			{child}
 		</Tippy>

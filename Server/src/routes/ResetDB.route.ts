@@ -1,6 +1,6 @@
 import { Router } from "express"
-import File from "../models/File"
-import Folder from "../models/Folder"
+import File from "../models/File.model"
+import Folder from "../models/Folder.model"
 
 const router = Router()
 

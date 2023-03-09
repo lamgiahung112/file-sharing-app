@@ -2,7 +2,7 @@ import useMyFilesData from "../../hooks/data/useMyFilesData"
 import FileIcon from "../FileIcon"
 
 const MyFiles = () => {
-	const { data } = useMyFilesData()
+	const { data, refetch } = useMyFilesData()
 	console.log(data)
 	return (
 		<div

@@ -1,5 +1,5 @@
 import { Handler } from "express"
-import Folder from "../models/Folder"
+import Folder from "../models/Folder.model"
 import ApiError from "../utils/ApiError"
 
 const createFolder: Handler = async (req, res, next) => {

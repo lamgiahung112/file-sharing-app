@@ -1,6 +1,6 @@
 import { Handler } from "express"
-import File from "../models/File"
-import Folder from "../models/Folder"
+import File from "../models/File.model"
+import Folder from "../models/Folder.model"
 import ApiError from "../utils/ApiError"
 
 const uploadFiles: Handler = async (req, res, next) => {

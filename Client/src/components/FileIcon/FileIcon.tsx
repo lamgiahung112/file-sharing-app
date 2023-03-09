@@ -21,7 +21,7 @@ const FileIcon = React.forwardRef<null, FileIconProps>((field, ref) => {
 	const { file } = field
 	const icon = mapFileExtensionToIcon(file)
 	return (
-		<SubMenu type="FILE" key={file._id}>
+		<SubMenu type="FILE" key={file._id} fileId={file._id}>
 			<div className={_(styles, "wrapper")}>
 				<FontAwesomeIcon icon={icon} className={_(styles, "icon")} />
 				<span className={_(styles, "name")}>{file.name}</span>

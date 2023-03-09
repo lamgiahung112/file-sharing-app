@@ -3,7 +3,7 @@ import cors from "cors"
 import initRoute from "./routes"
 import connectDB from "./db"
 import dotenv from "dotenv"
-import errorHandler from "./middlewares/ErrorHandler"
+import errorHandler from "./middlewares/ErrorHandler.middleware"
 import RedisClient from "./utils/RedisClient"
 
 dotenv.config()

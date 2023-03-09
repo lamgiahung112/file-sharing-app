@@ -1,6 +1,6 @@
 import { Handler } from "express"
 import jwt from "jsonwebtoken"
-import User from "../models/User"
+import User from "../models/User.model"
 import ApiError from "../utils/ApiError"
 import Mailer from "../utils/Mailer"
 import RedisClient from "../utils/RedisClient"

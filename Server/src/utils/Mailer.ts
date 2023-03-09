@@ -29,7 +29,7 @@ class Mailer {
 		type: VerificationType
 	) {
 		await this.transporter.sendMail({
-			from: "Trikohung Service <lamgiahung112@gmail.com>",
+			from: "Trikohung Service <noreply@trikohung.vn>",
 			to: toEmail,
 			subject: type === "VERIFY_LOGIN" ? "Verify your login" : "Verify your email",
 			html: `<a href="${`http://localhost:3000/user/verifyFromEmailLink?token=${token}&type=${type}`}">Click here to verify</a>`,

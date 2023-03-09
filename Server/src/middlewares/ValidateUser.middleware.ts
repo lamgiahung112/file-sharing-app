@@ -1,5 +1,5 @@
 import { Handler } from "express"
-import User from "../models/User"
+import User from "../models/User.model"
 import ApiError from "../utils/ApiError"
 
 const ValidateUser: Handler = async (req, res, next) => {
@@ -17,6 +17,10 @@ const ValidateUser: Handler = async (req, res, next) => {
 	if (!foundUser) return next(ApiError.NotFound("User Not Found"))
 	res.locals.user = email
 	return next()
+}
+
+const validatePermission: Handler = async (req, res, next) => {
+	const email = res.locals.user
 }
 
 export default ValidateUser
