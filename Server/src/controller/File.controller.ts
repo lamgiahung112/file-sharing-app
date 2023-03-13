@@ -1,6 +1,7 @@
 import { Handler } from "express"
 import File from "../models/File.model"
 import Folder from "../models/Folder.model"
+import Permission from "../models/Permission"
 import ApiError from "../utils/ApiError"
 
 const uploadFiles: Handler = async (req, res, next) => {
@@ -20,7 +21,16 @@ const uploadFiles: Handler = async (req, res, next) => {
 			folderId,
 			size: file.size,
 		})
-		await fileToSave.save().catch(() => failedToSave++)
+		await fileToSave
+			.save()
+			.then(async (f) => {
+				const filePermission = new Permission({
+					matchers: ["*"],
+					fileId: f._id,
+				})
+				await filePermission.save()
+			})
+			.catch(() => failedToSave++)
 	}
 	res.send({
 		failedToSave,

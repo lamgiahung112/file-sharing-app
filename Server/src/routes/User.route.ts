@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { signup, verifyFromEmailLink, login, verify } from "../controller/User.controller"
-import ValidateUser from "../middlewares/ValidateUser.middleware"
+import { ValidateUser } from "../middlewares/ValidateUser.middleware"
 
 const router = Router()
 

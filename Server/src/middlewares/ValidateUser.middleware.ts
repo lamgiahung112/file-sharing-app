@@ -1,4 +1,5 @@
 import { Handler } from "express"
+import File from "../models/File.model"
 import User from "../models/User.model"
 import ApiError from "../utils/ApiError"
 
@@ -19,8 +20,17 @@ const ValidateUser: Handler = async (req, res, next) => {
 	return next()
 }
 
-const validatePermission: Handler = async (req, res, next) => {
+const ValidatePermission: Handler = async (req, res, next) => {
 	const email = res.locals.user
+	const { fileId } = req.body as {
+		fileId: string
+	}
+
+	const f = await File.findById(fileId)
+	if (!f) return next(ApiError.BadRequest("This file does not exist"))
+	if (f.owner !== email)
+		return next(ApiError.Unauthorized("You are not allowed to modify this file"))
+	next()
 }
 
-export default ValidateUser
+export { ValidateUser, ValidatePermission }
